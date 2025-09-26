@@ -118,30 +118,30 @@ def calculate_electrical_length(calc_instance, physical_length_mm, freq_ghz, w, 
     lambda_g = c / (freq_ghz * 1e9 * math.sqrt(e_eff))
     return (physical_length_mm / lambda_g) * 360.0
 
-# if __name__ == '__main__':
-#     er_substrate = 4.2
-#     h_substrate = 1.6  
-#     t_copper = 0.035  
-#     calculator = Formulas(er=er_substrate, h=h_substrate, t=t_copper)
-#     print(f"--- Comparing Analysis Formulas for a Width of 3.0 mm ---\n")
+if __name__ == '__main__':
+    er_substrate = 4.2
+    h_substrate = 1.6  
+    t_copper = 0.035  
+    calculator = Formulas(er=er_substrate, h=h_substrate, t=t_copper)
+    print(f"--- Comparing Analysis Formulas for a Width of 3.0 mm ---\n")
     
-#     formulas_to_test = [
-#         'hammerstad_jensen_1980',
-#         'wheeler_1977',
-#         'hammerstad_1975',
-#         'schneider_1969',
-#         'wheeler_1965'
-#     ]
+    formulas_to_test = [
+        'hammerstad_jensen_1980',
+        'wheeler_1977',
+        'hammerstad_1975',
+        'schneider_1969',
+        'wheeler_1965'
+    ]
     
-#     for formula_name in formulas_to_test:
-#         try:
-#             z0, e_eff = calculator.analyze(w=3.0, formula=formula_name)
-#             print(f"Formula: {formula_name}")
-#             print(f"  - Z₀: {z0:.2f} Ohms,  ε_eff: {e_eff:.2f}")
-#         except Exception as e:
-#             print(f"Could not calculate for {formula_name}: {e}")
+    for formula_name in formulas_to_test:
+        try:
+            z0, e_eff = calculator.analyze(w=3.0, formula=formula_name)
+            print(f"Formula: {formula_name}")
+            print(f"  - Z₀: {z0:.2f} Ohms,  ε_eff: {e_eff:.2f}")
+        except Exception as e:
+            print(f"Could not calculate for {formula_name}: {e}")
 
-#     print(f"\n--- Running Synthesis to get a 50 Ohm line ---\n")
-#     required_width = calculator.synthesize(z0=50.0, formula='hammerstad_jensen_1980')
-#     print(f"To get 50 Ohms using 'hammerstad_jensen_1980' synthesis:")
-#     print(f"  - Required Width (W): {required_width:.3f} mm")
+    print(f"\n--- Running Synthesis to get a 50 Ohm line ---\n")
+    required_width = abs(calculator.synthesize(z0=50.0, formula='hammerstad_jensen_1980'))
+    print(f"To get 50 Ohms using 'hammerstad_jensen_1980' synthesis:")
+    print(f"  - Required Width (W): {required_width:.3f} mm")

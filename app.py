@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-from formulas import Formulas, calculate_electrical_length,calculate_physical_length
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
