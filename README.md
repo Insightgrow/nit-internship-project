@@ -2,7 +2,6 @@
 
 ### Project Overview
 This project is a web-based computational tool developed during my virtual internship at **NIT (National Institute of Technology), Rourkela**. It is designed to develop a lightweight, zero-installation, web-accessible tool for instant microstrip analysis and synthesis, bringing professional-grade calculations to every engineer's browser.
-**.
 
 The application bridges the gap between theoretical mathematical models and modern simulation standards by validating calculated results against data from **ADS (Advanced Design System)**, a comprehensive industry-standard software for RF design.
 
